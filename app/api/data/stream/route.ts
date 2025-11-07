@@ -1,4 +1,4 @@
-import { generateDataPoint } from '@/lib/dataGenerator'
+import { generateDataPoints } from '@/lib/dataGenerator'
 
 export const runtime = 'edge'
 
@@ -15,12 +15,12 @@ export async function GET(req: Request) {
       }
 
       // emit first immediately
-      write(generateDataPoint())
+      write(generateDataPoints())
 
       const id = setInterval(() => {
         if (closed) return
         try {
-          write(generateDataPoint())
+          write(generateDataPoints())
         } catch (e) {
           // ignore
         }
